@@ -21,8 +21,8 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define TXD2 17
 PZEM004Tv30 pzem2(Serial2, RXD2, TXD2);
 
-const char *ssid = "SSID_HOTSPOT_WIFI";
-const char *password = "PASSWORD_HOTSPOT_WIFI";
+// const char *ssid = "SSID_HOTSPOT_WIFI";
+// const char *password = "PASSWORD_HOTSPOT_WIFI";
 
 const size_t capacity = JSON_OBJECT_SIZE(50) + 1000;
 char message[1024];
