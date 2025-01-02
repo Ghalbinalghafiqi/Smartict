@@ -21,8 +21,8 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define TXD2 17
 PZEM004Tv30 pzem2(Serial2, RXD2, TXD2);
 
-const char *ssid = "bin";
-const char *password = "1234567890";
+const char *ssid = "SSID_HOTSPOT_WIFI";
+const char *password = "PASSWORD_HOTSPOT_WIFI";
 
 const size_t capacity = JSON_OBJECT_SIZE(50) + 1000;
 char message[1024];
@@ -275,7 +275,7 @@ void loop() {
 
   // Kirim data ke Telegram
   doc.clear();
-  doc["chat_id"] = 5260723107;
+  // doc["chat_id"] = "ID_BOT";
   doc["text"] = "Voltage      : " + String(voltage1) + "V\n"
                 "Current      : " + String(current1) + "A\n"
                 "Power Active : " + String(power1) + "W\n"
@@ -299,8 +299,8 @@ void connectToNetwork() {
 }
 
 void telePrintChatId() {
-  http.begin(
-      "https://api.telegram.org/bot6511538304:AAHxF-aqxsyKOPQWseUu5DttN6loA0hpADs/getUpdates");
+  // http.begin(
+  //     "https://api.telegram.org/botbot"ID:TOKEN_BOT"/getUpdates");
   int httpResponseCode = http.GET();
 
   if (httpResponseCode > 0) {
@@ -317,8 +317,8 @@ void telePrintChatId() {
 
 void teleSendMessage(String payload) {
   Serial.printf("HTTP Payload: %s\n", payload.c_str());
-  http.begin(
-      "https://api.telegram.org/bot6511538304:AAHxF-aqxsyKOPQWseUu5DttN6loA0hpADs/sendMessage");
+  // http.begin(
+  //     "https://api.telegram.org/bot"ID:TOKEN_BOT"/sendMessage");
   http.addHeader("Content-Type", "application/json");
   int httpResponseCode = http.POST(payload);
 
